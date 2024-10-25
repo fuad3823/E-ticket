@@ -19,13 +19,15 @@ function selectedSeat(seatId) {
     // Update total price
     totalPrice(count);
 
-    //  update Grand total price
+    // Update Grand total price
     grandTotalPrice(count);
 
-    // Disable the coupon button if less than 4 seats are selected
+    // Hide discount price if seats are less than 4
     if (count < 4) {
+      hideDiscountPrice();
       disableCouponButton();
     }
+
   } else {
     if (count < 4) {
       // Select the seat
@@ -42,29 +44,82 @@ function selectedSeat(seatId) {
       // Update total price
       totalPrice(count);
 
-     //   update Grand total price
-       grandTotalPrice(count);
+      // Update Grand total price
+      grandTotalPrice(count);
 
-      // Enable the coupon button when 4 seats are selected
+      // Check for coupon if exactly 4 seats are selected
       if (count === 4) {
-        copuponApply();
+        copuponApplyButton();
+        showDiscountedPrice(); // Show discount if 4 seats are selected
       }
     }
   }
+
+  // Check if count > 0 and input fields are filled
+  enableNextButton();
 
   // Update total seats count
   totalSeats(count);
 }
 
-// Function to enable the Coupon Apply button
-function copuponApply() {
-  const couponApplyElement = document.getElementById('copupon_apply');
-  couponApplyElement.removeAttribute('disabled');
+
+
+// --------------------------------------------------------
+
+// Show Discount Price
+function showDiscountedPrice() {
+  // Show discount price in display
+  const discountPriceDiv = document.getElementById('discount_price_div');
+  discountPriceDiv.classList.remove('hidden');
+
+  // Get input from coupon 
+  const inputCoupon = document.getElementById('input_coupon');
+  const inputCouponText = inputCoupon.value;
+
+  // Get Main Price
+  const mainPriceText = document.getElementById('total_price');
+  const mainPrice = parseFloat(mainPriceText.innerText); // Ensure it's a number
+
+  // Calculate discount price 
+  const discountPrice = calculateDiscountPrice(mainPrice, inputCouponText);
+
+  // Display discounted Price
+  const displayDiscountPrice = document.getElementById('discount_price');
+
+  // Set discount price
+  displayDiscountPrice.innerText = discountPrice;
+
+  // Merge discount and Grand price
+  const grandPrice = document.getElementById('grand_total_price');
+
+  const total_Main_and_discount_price = mainPrice - discountPrice;
+  grandPrice.innerText = total_Main_and_discount_price;
 }
 
-// Function to disable the Coupon Apply button
-function disableCouponButton() {
-  const couponApplyElement = document.getElementById('copupon_apply');
-  couponApplyElement.setAttribute('disabled', true);
+
+// next button work
+
+function nextButton(){
+  const firstSection=document.getElementById('first_section');
+  firstSection.classList.add('hidden');
+
+
+  const secondSection=document.getElementById('second_section');
+  secondSection.classList.remove('hidden');
+
+
 }
 
+
+// continue button work
+
+function continueButton(){
+  const firstSection=document.getElementById('first_section');
+  firstSection.classList.remove('hidden');
+
+
+  const secondSection=document.getElementById('second_section');
+  secondSection.classList.add('hidden');
+
+
+}

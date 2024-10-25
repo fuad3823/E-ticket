@@ -13,7 +13,7 @@
 
 <body>
 
-  <section class="">
+  <section id="first_section" class="">
     <!-- nav section -->
     <nav class="font_raleway max-w-[95%] mx-auto">
       <div class="navbar bg-base-100">
@@ -152,7 +152,7 @@
       <section class="border-t-2 border-t-[#1DD100] rounded-3xl">
 
         <!-- ft paribahan part -->
-        <div class="flex justify-center pt-24">
+        <div class="flex justify-center pt-14">
           <div class="text-center">
             <h3 class="text-4xl font-bold pb-9">F.T Paribahan</h3>
             <p class="text-[#03071299]">Yes, you can run unit tests and view the results directly within the app. The
@@ -403,16 +403,16 @@
                     <h1>Total Price</h1>
                     <h1 class="text-right  ">BDT <span id="total_price">0</span></h1>
                   </div>
-                  <div class="grid grid-cols-2 justify-between p-5 hidden">
+                  <div id="discount_price_div" class="grid grid-cols-2 justify-between p-5 hidden">
                     <h1 class=" font-semibold ">Discont Price</h1>
-                    <h1 class="text-right font-semibold ">BDT <span id="">0</span></h1>
+                    <h1 class="text-right font-semibold ">BDT <span id="discount_price">0</span></h1>
                   </div>
 
                   <div class="flex px-6">
                     <input class="px-3 rounded-l-xl w-full py-2" type="text" name="" placeholder="Have any copupon?"
-                      id="">
+                      id="input_coupon">
                     <div>
-                      <button id="copupon_apply" class="bg-green-400 px-3 py-2 rounded-r-xl text-white font-semibold btn"
+                      <button onclick="showDiscountedPrice()" id="copupon_apply" class="bg-green-400 px-3 py-2 rounded-r-xl text-white font-semibold btn"
                         disabled>Apply</button>
 
                     </div>
@@ -438,7 +438,7 @@
                   <input class="mr-7 border p-4 rounded-xl" type="text" name="" id="email"
                     placeholder="Enter your email id">
                 </div>
-                <button class="btn px-[210px] mt-5 bg-[#1DD100] text-white "disabled>Next</button>
+                <button onclick="nextButton()" id="next_button" class="btn px-[210px] mt-5 bg-[#1DD100] text-white "disabled>Next</button>
 
                 <div class="text-[#03071299] underline flex justify-evenly mt-8">
                   <h3>Terms and Conditions</h3>
@@ -484,7 +484,7 @@
   </section>
 
 
-  <section class="bg-[#F2F1F1] hidden">
+  <section id="second_section" class="bg-[#F2F1F1] hidden">
     <section class="bg-[#F2F1F1] min-h-screen flex items-center justify-center">
       <div class="items-center ">
         <div class="text-center py-10 px-10 bg-[#FFFFFF] ">
@@ -495,7 +495,7 @@
           <h3 class="text-xl font-medium">Thank you for Booking Our Bus Seats. <br>We are working hard to find the best
             service and deals for you.</h3>
           <p class="pt-3 text-[#4A4A4A]">Shortly you will find a confirmation in your email.</p>
-          <button class="bg-[#27AE60] text-white rounded-full font-semibold py-3 px-24 mt-3">Continue</button>
+          <button onclick="continueButton()" id="continue_button" class="bg-[#27AE60] text-white rounded-full font-semibold py-3 px-24 mt-3">Continue</button>
         </div>
       </div>
     </section>
